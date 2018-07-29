@@ -1,3 +1,5 @@
+// This script reads the .tsv files and puts them in the DB
+
 // 0        1           2
 // tconst	directors	writers
 
