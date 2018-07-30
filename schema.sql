@@ -76,7 +76,7 @@ create table title_episode
 alter table title_episode
   add primary key (tconst);
 
-create table title_principles
+create table title_principals
 (
   tconst     varchar(10)  not null,
   ordering   int          null,
@@ -88,7 +88,7 @@ create table title_principles
   unique (tconst)
 );
 
-alter table title_principles
+alter table title_principals
   add primary key (tconst);
 
 create table title_ratings

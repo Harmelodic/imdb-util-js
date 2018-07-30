@@ -1,0 +1,25 @@
+{
+    "name": "imdb",
+    "version": "1.0.0",
+    "description": "A program for interacting with the IMDb datasets in a more sensible way.",
+    "main": "search.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/Harmelodic/imdb.git"
+    },
+    "keywords": [
+        "imdb"
+    ],
+    "author": "Harmelodic",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://gitlab.com/Harmelodic/imdb/issues"
+    },
+    "homepage": "https://gitlab.com/Harmelodic/imdb#README",
+    "dependencies": {
+        "mysql": "^2.16.0"
+    }
+}
