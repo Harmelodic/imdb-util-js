@@ -56,7 +56,7 @@ function loadDataFromFileIntoTable(file, table) {
             con.query("LOAD DATA LOCAL INFILE '" + file + "' REPLACE INTO TABLE " + table + " IGNORE 1 lines;", (err) => {
                 if (err) throw err;
                 const endtime = Date.now();
-                console.log("Finished loading data into: " + table + " Time taken: " + (endtime - startTime) + "ms");
+                console.log("Finished loading data into: " + table + ". Time taken: " + (endtime - startTime) + "ms");
             })
         } else {
             console.log("File not found! - " + file);
