@@ -1,6 +1,8 @@
 const mysql = require("mysql");
 const config = require("./config.json");
 
+console.log("pid: " + process.pid);
+
 var con = mysql.createConnection({
     host: config.host,
     port: config.port,
@@ -14,31 +16,40 @@ con.connect((err) => {
     if (err) throw err;
     console.log("Connected!");
 
-    con.query("DELETE FROM name_basics", (err) => {
+    con.query("TRUNCATE TABLE name_basics", (err) => {
         if (err) throw err;
+        console.log("Cleared name_basics");
     })
 
-    con.query("DELETE FROM title_akas", (err) => {
+    con.query("TRUNCATE TABLE title_akas", (err) => {
         if (err) throw err;
+        console.log("Cleared title_akas");
     })
 
-    con.query("DELETE FROM title_basics", (err) => {
+    con.query("TRUNCATE TABLE title_basics", (err) => {
         if (err) throw err;
+        console.log("Cleared title_basics");
     })
 
-    con.query("DELETE FROM title_crew", (err) => {
+    con.query("TRUNCATE TABLE title_crew", (err) => {
         if (err) throw err;
+        console.log("Cleared title_crew");
     })
 
-    con.query("DELETE FROM title_episode", (err) => {
+    con.query("TRUNCATE TABLE title_episode", (err) => {
         if (err) throw err;
+        console.log("Cleared title_episode");
     })
 
-    con.query("DELETE FROM title_principals", (err) => {
+    con.query("TRUNCATE TABLE title_principals", (err) => {
         if (err) throw err;
+        console.log("Cleared title_principals");
     })
 
-    con.query("DELETE FROM title_ratings", (err) => {
+    con.query("TRUNCATE TABLE title_ratings", (err) => {
         if (err) throw err;
+        console.log("Cleared title_ratings");
     })
+
+    con.end();
 });
