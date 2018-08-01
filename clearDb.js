@@ -3,7 +3,7 @@ const config = require("./config.json");
 
 console.log("pid: " + process.pid);
 
-var con = mysql.createConnection({
+const con = mysql.createConnection({
     host: config.host,
     port: config.port,
     database: config.database,
@@ -12,7 +12,7 @@ var con = mysql.createConnection({
 });
 
 
-con.connect((err) => {
+con.connect(err => {
     if (err) throw err;
     console.log("Connected!");
 

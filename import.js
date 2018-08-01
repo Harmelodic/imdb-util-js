@@ -46,14 +46,14 @@ function loadDataFromFileIntoTable(file, table) {
         password: config.password
     });
 
-    con.connect((err) => {
+    con.connect(err => {
         if (err) throw err;
         console.log("Connected to DB! - " + table);
 
         if (fs.existsSync(file)) {
             console.log("Loading data into: " + table);
             const startTime = Date.now();
-            con.query("LOAD DATA LOCAL INFILE '" + file + "' REPLACE INTO TABLE " + table + " IGNORE 1 lines;", (err) => {
+            con.query("LOAD DATA LOCAL INFILE '" + file + "' REPLACE INTO TABLE " + table + " IGNORE 1 lines;", err => {
                 if (err) throw err;
                 const endtime = Date.now();
                 console.log("Finished loading data into: " + table + ". Time taken: " + (endtime - startTime) + "ms");
