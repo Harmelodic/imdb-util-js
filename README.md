@@ -5,24 +5,30 @@ A program for interacting with the IMDb datasets in a more sensible way.
 ## Setup
 
 - Install MySQL server (5.7+ required) and start it up.
-- Create a new database/schema called `imdb`
+- Create a new database/schema called `imdb`:
 
 ```
 CREATE SCHEMA imdb;
 ```
 
-- Run the `schema.sql` on the `imdb` database.
+- Run the `src/setup/schema.sql` on the `imdb` database.
 - Download the IMDb datasets from [https://datasets.imdbws.com/](https://datasets.imdbws.com/)
 - Extract them
 - Put the resulting `.tsv` files in the `datasets` directory.
-- Run the `import.js` script
+- Run the `src/setup/import.js` script
 
 ## Usage
 
-Interact with the data by running the `search.js` script:
+Interact with the data by running the `src/search/mini_title.js` script:
 
 ```
-node search.js
+node src/search/mini_title.js
+```
+
+Or if you trade in time for more details, then you can use the `src/search/title.js` script:
+
+```
+node src/search/title.js
 ```
 
 ## Fucking...goddammit, IMDb!
