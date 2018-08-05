@@ -1,7 +1,7 @@
 {
     "name": "imdb",
     "version": "1.0.0",
-    "description": "A program for interacting with the IMDb datasets in a more sensible way.",
+    "description": "A tool for pulling JSON data from the IMDb datasets.",
     "main": "search.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

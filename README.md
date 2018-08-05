@@ -1,6 +1,6 @@
 # imdb
 
-A program for interacting with the IMDb datasets in a more sensible way.
+A tool for pulling JSON data from the IMDb datasets.
 
 ## Setup
 
