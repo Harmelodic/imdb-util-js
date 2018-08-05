@@ -4,7 +4,6 @@ const { question } = require("../interfaces/std");
 console.log("pid:" + process.pid);
 
 function search(title, year) {
-
     let titleSQL =
         "SELECT " +
         "tb.tconst," +
