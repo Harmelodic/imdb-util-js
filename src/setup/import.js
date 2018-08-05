@@ -1,8 +1,7 @@
 // This script reads the .tsv files and puts them in the DB
 const fs = require("fs");
-const mysql = require("mysql");
 const path = require("path");
-const config = require("./config.json");
+const { query } = require("../db_query");
 
 console.log("pid: " + process.pid);
 
@@ -38,34 +37,20 @@ const dataSets = [
 ]
 
 function loadDataFromFileIntoTable(file, table) {
-    const con = mysql.createConnection({
-        host: config.host,
-        port: config.port,
-        database: config.database,
-        user: config.user,
-        password: config.password
-    });
 
-    con.connect(err => {
-        if (err) throw err;
-        console.log("Connected to DB! - " + table);
-
-        if (fs.existsSync(file)) {
-            console.log("Loading data into: " + table);
-            const startTime = Date.now();
-            con.query("LOAD DATA LOCAL INFILE '" + file + "' REPLACE INTO TABLE " + table + " IGNORE 1 lines;", err => {
-                if (err) throw err;
+    if (fs.existsSync(file)) {
+        console.log("Loading data into: " + table);
+        const startTime = Date.now();
+        query("LOAD DATA LOCAL INFILE '" + file + "' REPLACE INTO TABLE " + table + " IGNORE 1 lines;")
+            .then(() => {
                 const endtime = Date.now();
                 console.log("Finished loading data into: " + table + ". Time taken: " + (endtime - startTime) + "ms");
             })
-        } else {
-            console.log("File not found! - " + file);
-        }
-
-        con.end();
-    });
+    } else {
+        console.log("File not found! - " + file);
+    }
 }
 
 dataSets.forEach(dataset => {
-    loadDataFromFileIntoTable(path.normalize(__dirname + "/datasets/" + dataset.file), dataset.table);
+    loadDataFromFileIntoTable(path.normalize(__dirname + "/../../datasets/" + dataset.file), dataset.table);
 })
