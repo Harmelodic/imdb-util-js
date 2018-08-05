@@ -31,6 +31,18 @@ Or if you trade in time for more details, then you can use the `src/search/title
 node src/search/title.js
 ```
 
+## Teardown
+
+Rather than clearing out tables individually with the inefficient DML SQL command `DELETE`, I've written a little script using the DDL SQL command `TRUNCATE`.
+
+To clear the DB, run this script: `src/teardown/clearDb.js`.
+
+To get rid of the `imdb` database:
+
+```
+DROP SCHEMA imdb
+```
+
 ## Fucking...goddammit, IMDb!
 
 - Why does Independent Lens (`tt0486531`) have 426 directors?!
