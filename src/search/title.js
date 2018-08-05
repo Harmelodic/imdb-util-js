@@ -26,8 +26,8 @@ let titleSQL =
     "tb.end_year," +
     "tb.runtime_minutes," +
     "tb.genres," +
-    "tc.directors," +
-    "tc.writers," +
+    "tc.directors AS directorsIds," +
+    "tc.writers AS writersIds," +
     "te.parent_tconst," +
     "te.season_number," +
     "te.episode_number," +
@@ -50,40 +50,49 @@ if (args[1] !== undefined) {
 query(titleSQL)
     .then(titleResults => {
         return new Promise((resolve, reject) => {
-            // titleResults.forEach(title => {
-    
-            //     query("SELECT ordering, nconst, category, job, characters FROM title_principals WHERE tconst='" + title.tconst + "'")
-            //         .then(principalsResults => {
-            //             title.principals = principalsResults.map(principal => {
-            //                 query("SELECT primary_name, birth_year, death_year, primary_profession FROM name_basics WHERE nconst='" + principal.nconst + "'")
-            //                     .then(nameResults => {
-            //                         principal.details = nameResults[0];
-            //                         return principal;
-            //                     })
-            //             });
-    
-            //         });
-    
-            //     title.directors = title.directors && title.directors.split(",").map(director => {
-            //         query("SELECT primary_name, birth_year, death_year, primary_profession FROM name_basics WHERE nconst='" + director + "'")
-            //             .then(nameResults => {
-            //                 director = nameResults[0];
-            //                 return director;
-            //             })
-            //     });
-    
-            //     title.writers = title.writers && title.writers.split(",").map(writer => {
-            //         query("SELECT primary_name, birth_year, death_year, primary_profession FROM name_basics WHERE nconst='" + writer + "'")
-            //             .then(nameResults => {
-            //                 writer = nameResults[0];
-            //                 return writer;
-            //             })
-            //     });;
-            // });
+            let promises = [];
 
-            resolve(titleResults);
+            titleResults.forEach(title => {
+
+                title.directors = [];
+                title.directorsIds && title.directorsIds.split(",").forEach(directorId => {
+                    promises.push(query("SELECT primary_name, birth_year, death_year, primary_profession FROM name_basics WHERE nconst='" + directorId + "'")
+                        .then(nameResults => {
+                            title.directors.push(nameResults[0]);
+                        })
+                    )
+                });
+                delete title.directorsIds;
+
+                title.writers = [];
+                title.writersIds && title.writersIds.split(",").forEach(writerId => {
+                    promises.push(query("SELECT primary_name, birth_year, death_year, primary_profession FROM name_basics WHERE nconst='" + writerId + "'")
+                        .then(nameResults => {
+                            title.writers.push(nameResults[0]);
+                        })
+                    );
+                });
+                delete title.writersIds;
+
+                title.principals = [];
+                promises.push(query("SELECT ordering, nconst, category, job, characters FROM title_principals WHERE tconst='" + title.tconst + "'")
+                    .then(principalsResults => {
+                        principalsResults.forEach(principal => {
+                            promises.push(query("SELECT primary_name, birth_year, death_year, primary_profession FROM name_basics WHERE nconst='" + principal.nconst + "'")
+                                .then(nameResults => {
+                                    title.principals.push(nameResults[0]);
+                                })
+                            );
+                        })
+                    }))
+            });
+
+            Promise.all(promises)
+                .then(() => {
+                    resolve(titleResults);
+                });
         })
     })
     .then((results) => {
-        console.log(results);
+        console.log(JSON.stringify(results, null, 4));
     });
