@@ -1,4 +1,4 @@
-const { query } = require("../db_query");
+const { query } = require("../interfaces/db");
 
 console.log("pid:" + process.pid);
 

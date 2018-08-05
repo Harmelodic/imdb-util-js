@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-const config = require("../config.json");
+const config = require("./db_config.json");
 
 exports.query = (sql) => {
     return new Promise(((resolve, reject) => {
