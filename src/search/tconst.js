@@ -3,7 +3,7 @@ const { question } = require("../interfaces/std");
 
 console.log("pid:" + process.pid);
 
-function search(title, year) {
+function search(tconst) {
     let titleSQL =
         "SELECT " +
         "tb.tconst," +
@@ -18,11 +18,7 @@ function search(title, year) {
         "LEFT JOIN title_crew AS tc " +
         "ON tb.tconst = tc.tconst " +
         "WHERE " +
-        "UPPER(tb.primary_title) LIKE '%" + title.toUpperCase() + "%'";
-
-    if (year) {
-        titleSQL += " AND start_year=" + year;
-    }
+        "UPPER(tb.tconst) LIKE '%" + tconst.toUpperCase() + "%'";
 
     query(titleSQL)
         .then(titleResults => {
@@ -54,7 +50,7 @@ function search(title, year) {
 
                 Promise.all(promises)
                     .then(() => {
-                        resolve(titleResults);
+                        resolve(titleResults[0]);
                     });
             })
         })
@@ -63,10 +59,7 @@ function search(title, year) {
         });
 }
 
-question("Title name?: ")
-    .then(title => {
-        question("Year? (leave empty for any): ")
-            .then(year => {
-                search(title, year);
-            })
+question("tconst?: ")
+    .then(tconst => {
+        search(tconst);
     })
