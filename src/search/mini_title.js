@@ -10,6 +10,7 @@ question("Title name?: ")
                 findMini(title, year)
                     .then((results) => {
                         console.log(JSON.stringify(results, null, 4));
+                        process.exit();
                     });
             })
     })

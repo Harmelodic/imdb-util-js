@@ -8,5 +8,6 @@ question("tconst?: ")
         lookupMini(tconst)
             .then((result) => {
                 console.log(JSON.stringify(result, null, 4));
+                process.exit();
             });
     })
