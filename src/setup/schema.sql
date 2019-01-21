@@ -47,7 +47,7 @@ create table title_crew
 (
   tconst    varchar(10)   not null,
   directors varchar(8192) null,
-  writers   varchar(8192) null,
+  writers   varchar(10000) null,
   constraint title_crew_tconst_uindex
   unique (tconst)
 );
