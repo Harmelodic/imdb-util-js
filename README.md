@@ -1,4 +1,4 @@
-# imdb
+# imdb-util
 
 A tool for pulling JSON data from the IMDb datasets.
 
