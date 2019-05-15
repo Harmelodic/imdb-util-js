@@ -1,11 +1,11 @@
 const { find } = require("../services/title");
-const { question } = require("../interfaces/std");
+const { std } = require("@harmelodic/interfaces");
 
 console.log("pid:" + process.pid);
 
-question("Title name?: ")
+std.prompt("Title name?: ")
     .then(title => {
-        question("Year? (leave empty for any): ")
+        std.prompt("Year? (leave empty for any): ")
             .then(year => {
                 find(title, year)
                     .then((results) => {

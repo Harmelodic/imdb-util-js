@@ -1,7 +1,7 @@
 // This script reads the .tsv files and puts them in the DB
 const fs = require("fs");
 const path = require("path");
-const { query } = require("../interfaces/db");
+const { query } = require("../db");
 
 console.log("pid: " + process.pid);
 

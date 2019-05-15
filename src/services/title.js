@@ -1,4 +1,4 @@
-const { query } = require("../interfaces/db");
+const { query } = require("../db");
 
 exports.lookupMini = (tconst) => {
     let titleSQL =

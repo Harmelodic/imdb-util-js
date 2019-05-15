@@ -1,9 +1,9 @@
 const { lookupMini } = require("../services/title");
-const { question } = require("../interfaces/std");
+const { std } = require("@harmelodic/interfaces");
 
 console.log("pid:" + process.pid);
 
-question("tconst?: ")
+std.prompt("tconst?: ")
     .then(tconst => {
         lookupMini(tconst)
             .then((result) => {

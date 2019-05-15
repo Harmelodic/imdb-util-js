@@ -3,5 +3,6 @@
     "port": 3306,
     "database": "imdb",
     "user": "root",
-    "password": ""
+    "password": "",
+    "connectionLimit": 100
 }
