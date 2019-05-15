@@ -20,8 +20,7 @@
   },
   "homepage": "https://gitlab.com/Harmelodic/imdb#README",
   "dependencies": {
-    "@harmelodic/interfaces": "^1.0.0",
-    "mysql": "^2.16.0"
+    "@harmelodic/interfaces": "^2.0.0"
   },
   "devDependencies": {}
 }
