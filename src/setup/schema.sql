@@ -1,3 +1,5 @@
+use imdb;
+
 create table name_basics
 (
   nconst             varchar(10)  not null,
@@ -47,7 +49,7 @@ create table title_crew
 (
   tconst    varchar(10)   not null,
   directors varchar(8192) null,
-  writers   varchar(10000) null,
+  writers   varchar(12000) null,
   constraint title_crew_tconst_uindex
   unique (tconst)
 );

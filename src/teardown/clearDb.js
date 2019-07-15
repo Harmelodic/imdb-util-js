@@ -2,37 +2,35 @@ const { query } = require("../db");
 
 console.log("pid: " + process.pid);
 
-query("TRUNCATE TABLE name_basics")
-    .then(() => {
-        console.log("Cleared name_basics");
-    })
+const tables = [
+  "name_basics",
+  "title_akas",
+  "title_basics",
+  "title_crew",
+  "title_episode",
+  "title_principals",
+  "title_ratings"
+]
 
-query("TRUNCATE TABLE title_akas")
-    .then(() => {
-        console.log("Cleared title_akas");
-    })
+const promises = []
 
-query("TRUNCATE TABLE title_basics")
-    .then(() => {
-        console.log("Cleared title_basics");
-    })
+tables.forEach(table => {
+  promises.push(
+    query(`DROP TABLE ${table}`)
+      .then(() => {
+          console.log(`Cleared ${table}`);
+      })
+      .catch((err) => {
+          if (err.sqlMessage.includes("Unknown table")) {
+            console.log(`Table '${table}' already dropped`)
+          }
+          else {
+            console.log(err);
+          }
+      })
+  )
+})
 
-query("TRUNCATE TABLE title_crew")
-    .then(() => {
-        console.log("Cleared title_crew");
-    })
-
-query("TRUNCATE TABLE title_episode")
-    .then(() => {
-        console.log("Cleared title_episode");
-    })
-
-query("TRUNCATE TABLE title_principals")
-    .then(() => {
-        console.log("Cleared title_principals");
-    })
-
-query("TRUNCATE TABLE title_ratings")
-    .then(() => {
-        console.log("Cleared title_ratings");
-    })
+Promise.all(promises).then(() => {
+  process.exit()
+});

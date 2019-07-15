@@ -4,7 +4,9 @@
   "description": "A tool for pulling JSON data from the IMDb datasets.",
   "main": "search.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "mysql -u root < ./src/setup/schema.sql && node ./src/setup/import.js",
+    "teardown": "node ./src/teardown/cleardb.js"
   },
   "repository": {
     "type": "git",

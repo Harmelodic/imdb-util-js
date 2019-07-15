@@ -46,6 +46,9 @@ function loadDataFromFileIntoTable(file, table) {
                 const endtime = Date.now();
                 console.log("Finished loading data into: " + table + ". Time taken: " + (endtime - startTime) + "ms");
             })
+            .catch((err) => {
+                console.log(`Error when loading data into: ${table}\n${err}\n`);
+            })
     } else {
         console.log("File not found! - " + file);
     }
