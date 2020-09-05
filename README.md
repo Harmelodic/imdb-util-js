@@ -4,6 +4,9 @@ A tool for pulling JSON data from the IMDb datasets.
 
 ## Setup
 
+- Download the IMDb datasets from [https://datasets.imdbws.com/](https://datasets.imdbws.com/)
+- Extract them
+- Put the resulting `.tsv` files in the `datasets` directory.
 - Install MySQL server (5.7+ required) and start it up.
 - Create a new database/schema called `imdb`:
 
@@ -11,11 +14,8 @@ A tool for pulling JSON data from the IMDb datasets.
 CREATE SCHEMA imdb;
 ```
 
-- Run the `src/setup/schema.sql` on the `imdb` database.
-- Download the IMDb datasets from [https://datasets.imdbws.com/](https://datasets.imdbws.com/)
-- Extract them
-- Put the resulting `.tsv` files in the `datasets` directory.
-- Run the `src/setup/import.js` script
+- Run the `src/setup/schema.sql` on the `imdb` database - `npm run schema`
+- Run the `src/setup/import.js` script - `npm run import`
 
 ## Usage
 
@@ -35,7 +35,7 @@ node src/search/title.js
 
 Rather than clearing out tables individually with the inefficient DML SQL command `DELETE`, I've written a little script using the DDL SQL command `TRUNCATE`.
 
-To clear the DB, run this script: `src/teardown/clearDb.js`.
+To clear the DB, run this script: `src/teardown/clearDb.js` - `npm run teardown`.
 
 To get rid of the `imdb` database:
 

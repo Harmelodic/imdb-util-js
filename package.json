@@ -5,7 +5,8 @@
   "main": "search.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "mysql -u root < ./src/setup/schema.sql && node ./src/setup/import.js",
+    "schema": "mysql -u root < ./src/setup/schema.sql",
+    "import": "node ./src/setup/import.js",
     "teardown": "node ./src/teardown/cleardb.js"
   },
   "repository": {
