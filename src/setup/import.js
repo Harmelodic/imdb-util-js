@@ -37,23 +37,35 @@ const dataSets = [
 ]
 
 function loadDataFromFileIntoTable(file, table) {
-
-    if (fs.existsSync(file)) {
-        console.log("Loading data into: " + table);
-        const startTime = Date.now();
-        query("LOAD DATA LOCAL INFILE '" + file + "' REPLACE INTO TABLE " + table + " IGNORE 1 lines;")
-            .then(() => {
-                const endtime = Date.now();
-                console.log("Finished loading data into: " + table + ". Time taken: " + (endtime - startTime) + "ms");
-            })
-            .catch((err) => {
-                console.log(`Error when loading data into: ${table}\n${err}\n`);
-            })
-    } else {
-        console.log("File not found! - " + file);
-    }
+    return new Promise((resolve, reject) => {
+        if (fs.existsSync(file)) {
+            console.log("Loading data into: " + table);
+            const startTime = Date.now();
+            query("LOAD DATA LOCAL INFILE '" + file + "' REPLACE INTO TABLE " + table + " IGNORE 1 lines;")
+                .then(() => {
+                    const endtime = Date.now();
+                    console.log("Finished loading data into: " + table + ". Time taken: " + (endtime - startTime) + "ms");
+                    resolve();
+                })
+                .catch((err) => {
+                    console.log(`Error when loading data into: ${table}\n${err}\n`);
+                    reject();
+                })
+        } else {
+            console.log("File not found! - " + file);
+            reject();
+        }
+    })
 }
 
+const promises = [];
+
 dataSets.forEach(dataset => {
-    loadDataFromFileIntoTable(path.normalize(__dirname + "/../../datasets/" + dataset.file), dataset.table);
+    promises.push(loadDataFromFileIntoTable(path.normalize(__dirname + "/../../datasets/" + dataset.file), dataset.table));
 })
+
+Promise.all(promises)
+    .then(() => {
+        console.log("DONE!");
+        process.exit(0);
+    })
