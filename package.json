@@ -5,6 +5,9 @@
   "main": "search.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "tconst": "node ./src/search/tconst.js",
+    "mini": "node ./src/search/mini_title.js",
+    "title": "node ./src/search/title.js",
     "schema": "mysql -u root < ./src/setup/schema.sql",
     "import": "node ./src/setup/import.js",
     "teardown": "node ./src/teardown/cleardb.js"
