@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/Harmelodic/imdb.git"
+    "url": "git+https://github.com/Harmelodic/imdb-util.git"
   },
   "keywords": [
     "imdb"
@@ -22,9 +22,9 @@
   "author": "Harmelodic",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://gitlab.com/Harmelodic/imdb/issues"
+    "url": "https://github.com/Harmelodic/imdb-util/issues"
   },
-  "homepage": "https://gitlab.com/Harmelodic/imdb#README",
+  "homepage": "https://github.com/Harmelodic/imdb-util#README",
   "dependencies": {
     "@harmelodic/interfaces": "^2.0.0"
   },
