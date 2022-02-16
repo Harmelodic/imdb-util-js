@@ -4,7 +4,7 @@
   "description": "A tool for pulling JSON data from the IMDb datasets.",
   "main": "search.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "tconst": "node ./src/search/tconst.js",
     "mini": "node ./src/search/mini_title.js",
     "title": "node ./src/search/title.js",
