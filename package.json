@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/Harmelodic/imdb-util#README",
   "dependencies": {
-    "@harmelodic/interfaces": "^2.0.0"
-  },
-  "devDependencies": {}
+    "mysql": "^2.18.1"
+  }
 }
