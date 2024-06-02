@@ -1,6 +1,6 @@
-# imdb-util
+# imdb-util-js
 
-A tool for pulling JSON data from the IMDb datasets.
+A tool for pulling JSON data from the IMDb datasets - written in JavaScript.
 
 ## Setup
 
