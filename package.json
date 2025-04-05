@@ -28,6 +28,6 @@
   "dependencies": {
     "mysql": "2.18.1",
     "chromedriver": "135.0.0",
-    "selenium-webdriver": "4.30.0"
+    "selenium-webdriver": "4.31.0"
   }
 }
