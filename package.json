@@ -27,7 +27,7 @@
   "homepage": "https://github.com/Harmelodic/imdb-util#README",
   "dependencies": {
     "mysql": "2.18.1",
-    "chromedriver": "138.0.5",
+    "chromedriver": "139.0.0",
     "selenium-webdriver": "4.34.0"
   }
 }
