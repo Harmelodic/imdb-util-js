@@ -9,7 +9,7 @@ on:
 
 jobs:
   verify-github-workflows:
-    uses: harmelodic/workflows/.github/workflows/verify-github-workflows.yaml@1d104e508f3b193163308c2abf59c013863b9b5d
+    uses: harmelodic/workflows/.github/workflows/verify-github-workflows.yaml@e7d794f82cb406ae0d464bc2fc4cb7b0fa2b5416
 
   verify-javascript-project:
-    uses: harmelodic/workflows/.github/workflows/verify-javascript-project.yaml@1d104e508f3b193163308c2abf59c013863b9b5d
+    uses: harmelodic/workflows/.github/workflows/verify-javascript-project.yaml@e7d794f82cb406ae0d464bc2fc4cb7b0fa2b5416
